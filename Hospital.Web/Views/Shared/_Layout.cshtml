@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!--==================== SWIPER CSS ====================-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="~/css/home-style.css" />
+    <link rel="stylesheet" href="~/css/sign-in-style.css" />
+    <link rel="stylesheet" href="~/css/register-style.css" />
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" />
+
+
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+    <!--==================== website-logo-And-title ====================-->
+    <link rel="icon" type="image/x-icon" href="~/image/dpi-hospital.svg" />
+    <title>DPI Hospital</title>
+</head>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">DPI Hospital</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="@Url.Action("Index", "Home")" class="nav__link active-link">
+                            <i class="uil uil-stethoscope-alt nav__icon"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#about" class="nav__link">
+                            <i class="uil uil-hospital nav__icon"></i> About
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#services" class="nav__link">
+                            <i class="uil uil-stethoscope-alt nav__icon"></i> Services
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/admin/Hospitals/Index" class="nav__link active-link" ><i class="uil uil-stethoscope-alt nav__icon"></i>Hospital</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/admin/Rooms" class="nav__link active-link"><i class="uil uil-stethoscope-alt nav__icon"></i>Rooms</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/admin/Contacts" class="nav__link active-link"><i class="uil uil-stethoscope-alt nav__icon"></i>Contacts</a>
+
+
+                    </li>
+                    <li class="nav__item">
+                        <a href="/admin/Users" class="nav__link active-link"><i class="uil uil-stethoscope-alt nav__icon"></i>Users</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/admin/Users/AllDoctors" class="nav__link active-link">
+                            <i class="uil uil-stethoscope-alt nav__icon"></i>Doctors
+                        </a>
+                    </li>
+
+                    <partial name="_LoginPartial" />
+
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__btns">
+                <!-- theme change button -->
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-draggabledots"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--==================== Main ====================-->
+    <div class="container">
+        <main class="casas" style="width:100%;height:auto;padding:10vh;">
+            @RenderBody()
+        </main>
+    </div>
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">DPI</h1>
+                    <span class="footer__subtitle">
+                        DPI Hospital provides progressive
+                        and affordable healthcare, accessible online for everyone.
+                    </span>
+                </div>
+
+                <ul class="footer__links">
+                    <li>
+                        <a href="/" class="footer__link">Home</a>
+                    </li>
+                    <li>
+                        <a href="/#services" class="footer__link">Services</a>
+                    </li>
+                    <li>
+                        <a href="/#about" class="footer__link">About</a>
+                    </li>
+                </ul>
+                <div class="footer__socials">
+                    <a  target="_blank" class="footer__social">
+                        <i class="uil uil-facebook-f"></i>
+                    </a>
+                    <a  target="_blank" class="footer__social">
+                        <i class="uil uil-instagram"></i>
+                    </a>
+                    <a  target="_blank" class="footer__social">
+                        <i class="ri-twitter-x-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="footer__copy">&#169; DPI Hospital 2024. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!--==================== SCROLL TOP ====================-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a>
+
+    <!--==================== SWIPER JS ====================-->
+    <script src="~/js/swiper-bundle.min.js"></script>
+
+    <!--==================== MAIN JS ====================-->
+    <script src="~/js/home-main.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,138 @@
+﻿@model Hospital.ViewModels.RoomViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    /* Import Google font - Poppins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .Reg-main {
+        min-height: 150vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: linear-gradient(-45deg, #2d9596 0%, #04befe 100%);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .Reg-container {
+        max-width: 800px;
+        width: 100%;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .Reg-header {
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .Reg-form {
+        margin-top: 30px;
+    }
+
+    .Reg-input-box {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        .Reg-input-box label {
+            color: #333;
+        }
+
+    .Reg-form .Reg-input-box input {
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 0 15px;
+    }
+
+    .Reg-input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .Reg-button {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 30px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #265073;
+    }
+
+        .Reg-button:hover {
+            background: #2D9596;
+        }
+</style>
+
+<div class="Reg-main">
+    <div class="Reg-container">
+        <h1>@ViewData["Title"]</h1>
+        <div class="Reg-header">Edit Room</div>
+
+        <form action="/admin/Rooms/edit" method="post" class="Reg-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" readonly />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="RoomNumber" class="control-label"></label>
+                <input asp-for="RoomNumber" class="form-control" />
+                <span asp-validation-for="RoomNumber" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="HospitalInfoId" class="control-label"></label>
+                <input asp-for="HospitalInfoId" class="form-control" />
+                <span asp-validation-for="HospitalInfoId" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <input type="submit" value="Save" class="Reg-button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

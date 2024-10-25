@@ -1,0 +1,185 @@
+﻿@page
+@using Hospital.Models
+@model DoctorRegisterModel
+@{
+    ViewData["Title"] = "Register Doctor";
+}
+<style>
+    /* Import Google font - Poppins */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .Reg-main {
+        min-height: 150vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: linear-gradient(-45deg, #2d9596 0%, #04befe 100%);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .Reg-container {
+        max-width: 800px;
+        width: 100%;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .Reg-header {
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .Reg-form {
+        margin-top: 30px;
+    }
+
+    .Reg-input-box {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        .Reg-input-box label {
+            color: #333;
+        }
+
+    .Reg-form .Reg-input-box input,
+    .Reg-form .Reg-select-box select {
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 0 15px;
+    }
+
+    .Reg-input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .Reg-button {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 30px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #265073;
+    }
+
+        .Reg-button:hover {
+            background: #2D9596;
+        }
+</style>
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="Reg-main">
+    <div class="Reg-container">
+        <div class="Reg-header">Register</div>
+
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data" class="Reg-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Name">Full Name</label>
+                <input asp-for="Input.Name" placeholder="Full Name" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.UserName">Username</label>
+                <input asp-for="Input.UserName" placeholder="Username" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.City">City</label>
+                <input asp-for="Input.City" placeholder="City" />
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Gender">Gender</label>
+                <select asp-for="Input.Gender" asp-items="@Html.GetEnumSelectList<Gender>()">
+                    <option value="-1">Select Gender</option>
+                </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.DOB">Date of Birth</label>
+                <input asp-for="Input.DOB" type="date" />
+                <span asp-validation-for="Input.DOB" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Address">Address</label>
+                <input asp-for="Input.Address" placeholder="Address" />
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Nationality">Nationality</label>
+                <input asp-for="Input.Nationality" placeholder="Nationality" />
+                <span asp-validation-for="Input.Nationality" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Specialist">Specialist</label>
+                <input asp-for="Input.Specialist" placeholder="Specialist" />
+                <span asp-validation-for="Input.Specialist" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Email">Email</label>
+                <input asp-for="Input.Email" autocomplete="username" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.Password">Password</label>
+                <input asp-for="Input.Password" type="password" autocomplete="new-password" placeholder="Password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <input asp-for="Input.ConfirmPassword" type="password" autocomplete="new-password" placeholder="Confirm Password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <label asp-for="Input.PictureUrl">Profile Picture</label>
+                <input asp-for="Input.PictureUrl" type="file" />
+                <span asp-validation-for="Input.PictureUrl" class="text-danger"></span>
+            </div>
+
+            <div class="Reg-input-box">
+                <input asp-for="Input.IsDoctor" type="checkbox" class="form-check" />
+                <label asp-for="Input.IsDoctor" class="form-check-label">I am a Doctor</label>
+                <span asp-validation-for="Input.IsDoctor" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="Reg-button">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

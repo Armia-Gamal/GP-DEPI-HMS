@@ -1,0 +1,60 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<div class="signin-container" style="margin-left: -201px;position: relative;width: 158%;background-color: #fff;min-height: 100vh;overflow: hidden;">
+    <div class="forms-container">
+        <section class="signin">
+            <form id="account" class="form sign-in-form" id="form" method="post">
+                <h2 class="title">Login</h2>
+
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="form__field" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-check">
+                    <label asp-for="Input.RememberMe" class="form-check-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="btn solid">Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</div>
+<div class="panels-container">
+    <div class="panel left-panel" style="padding: 3rem 27% 2rem 12%;">
+        <div class="content">
+            <h3>New here ?</h3>
+            <p>
+                If this is your first time coming here, go to register here.
+                Please note that registration is for the patient only
+            </p>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a>
+        </div>
+        <img src="~/images/aa6.png" class="image" alt="" />
+
+    </div>
+</div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
